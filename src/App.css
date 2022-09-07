@@ -1,0 +1,51 @@
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  width: 100vw;
+  padding: 10px;
+}
+
+.serch {
+  padding: 9px 6px;
+  display: flex;
+  border-radius: 20px;
+  background-color: #191818;
+}
+input {
+  padding: 6px;
+  border-radius: 10px;
+  background: transparent;
+  border: none;
+  width: 36vw;
+  outline: none;
+  font-size: 20px;
+  color: aliceblue;
+}
+button {
+  padding: 0 10px;
+  background: none;
+  border: none;
+  color: aliceblue;
+
+}
+.logo {
+  width: 14vw;
+}
+
+.container {
+  margin: 7.98vh auto;
+  width: 90vw;
+  padding: 10px;
+  background-image: url("https://tec8.com.br/wp-content/uploads/2017/10/viridian-city.png");
+  background-size: contain;
+  background-position: center center;
+  border-radius: 31px;
+}
+.content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 37px;
+}
