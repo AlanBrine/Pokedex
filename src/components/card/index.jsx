@@ -1,14 +1,12 @@
+import { useState } from "react";
 import "./style.css";
 
-function Card({ name, id, type }) {
-  const pokemonImg = (t1) => {
-    if (t1 <= 9) {
-      return `https://assets.pokemon.com/assets/cms2/img/pokedex/full/00${t1}.png`;
-    } else if (t1 <= 99) {
-      return `https://assets.pokemon.com/assets/cms2/img/pokedex/full/0${t1}.png`;
-    } else if (t1 >= 100) {
-      return `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${t1}.png`;
-    }
+function Card({ name, id, type, stats }) {
+  const [active, setActive] = useState(false);
+  const pokemonImg = () => {
+    return `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${id
+      .toString()
+      .padStart(3, "0")}.png`;
   };
   const upper = (palvra) => palvra[0].toUpperCase() + palvra.substring(1);
 
@@ -18,7 +16,19 @@ function Card({ name, id, type }) {
     }
     return " ";
   };
-
+  const toggle = () => {
+    Array.from(document.querySelectorAll(".pokemon")).forEach(function (
+      el
+    ) {
+      el.classList.remove("select");
+    });
+    Array.from(document.querySelectorAll(".stats")).forEach(function (
+      el
+    ) {
+      el.classList.add("hidden");
+    });
+    setActive(!active);
+  };
   const forward = () => {
     if (type[1]) {
       return " /";
@@ -27,18 +37,28 @@ function Card({ name, id, type }) {
   };
 
   return (
-    <div className="pokemon-card hover blur  ">
-      <div className="title">
-        <span className="nome">{upper(name)} </span>
-        <div className="types">
-          <span className={upper(type[0].type.name)}>
-            {upper(type[0].type.name)}
-          </span>
-          {forward()}
-          <span className={notIndefined()}> {notIndefined()} </span>
+    <div className={` pokemon ${active ? "select" : " "}`}  onClick={toggle}>
+      <div className={`pokemon-card  ${ active ? " " :"hover blur" }`} onClick={toggle}>
+        <div className="title">
+          <span className="nome">{upper(name)} </span>
+          <div className="types">
+            <span className={upper(type[0].type.name)}>
+              {upper(type[0].type.name)}
+            </span>
+            {forward()}
+            <span className={notIndefined()}> {notIndefined()} </span>
+          </div>
         </div>
-      </div>
-      <img className="img" src={pokemonImg(id)} />
+        <img className="img" src={pokemonImg()} onClick={toggle} />
+        </div>
+        <div className={`stats ${active ? " " : "hidden"}`}>
+          <span> HP: {stats[0].base_stat}</span>
+          <span> Attack: {stats[1].base_stat}</span>
+          <span> Defense: {stats[2].base_stat}</span>
+          <span> Sp.Atk: {stats[3].base_stat}</span>
+          <span> Sp.Def: {stats[4].base_stat}</span>
+          <span> Speed: {stats[5].base_stat}</span>
+        </div>
     </div>
   );
 }

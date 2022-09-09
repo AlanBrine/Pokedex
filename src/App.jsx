@@ -4,6 +4,7 @@ import axios from "axios";
 import { FaSearch } from "react-icons/fa";
 import "./App.css";
 import Card from "./components/card";
+
 function App() {
   const [pokemon, setPokemon] = useState([]);
   const [serch, setSerch] = useState(" ");
@@ -12,10 +13,12 @@ function App() {
   }, []);
 
   function getPokemon() {
-    var points = [];
-    for (var i = 1; i < 251; i++) {
+    let points = [];
+    for (var i = 1; i < 250; i++) {
       points.push(`https://pokeapi.co/api/v2/pokemon/${i}/`);
+     //?? points.length == 250 ? 
     }
+  
 
     axios
       .all(points.map((points) => axios.get(points)))
@@ -62,6 +65,7 @@ function App() {
                 name={pokemon.data.name}
                 id={pokemon.data.id}
                 type={pokemon.data.types}
+               stats={pokemon.data.stats}
               />
             ))}
         </div>

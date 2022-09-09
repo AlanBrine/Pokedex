@@ -25,7 +25,11 @@
     backdrop-filter: blur(0px);
     transform: scale(1.1);
   }
-  
+  .pokemon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   .hover:hover img {
     box-shadow: none;
     backdrop-filter: blur(0px);
@@ -51,6 +55,33 @@
     font-weight: bold;
     padding: 10px;
   }
+
+  .stats {
+    display: flex;
+    flex-direction: column;
+   
+    margin-bottom: 27px;
+    width: 14.4vw;
+    height: 41.4vh;
+    padding: 30px 10px;
+  
+    background-color: #191818;
+    border-radius: 15px;
+  
+    gap: 13px;
+  }
+  
+  .stats span::after {
+    display: block;
+  
+    content: " ";
+    width: 85%;
+    height: 1px;
+  
+    background-color: #ffff;
+    border-radius: 30px;
+  }
+  
   .Fire {
     color: #e83f4b;
   }
@@ -115,4 +146,8 @@
   }
   .Steel {
     color: #5d756d;
+  }
+
+  .hidden{
+    display: none;
   }
